@@ -1,0 +1,28 @@
+version: "3.2"
+
+services:
+  webserver:
+    build: ./nginx
+    ports:
+      - "80:80"
+      - "433:433"
+    networks:
+      backend:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "4567:4567"
+    volumes:
+      - .:/code
+    command: ruby api.rb -p 4567 -o 0.0.0.0
+    restart: always
+    networks:
+      backend:
+        aliases:
+          - app
+
+networks:
+  backend:
+      

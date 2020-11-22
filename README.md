@@ -1,2 +1,5 @@
-# salary_ruby
-Salary Calculation using Ruby
+## Ruby : Salary
+
+```bash
+ruby api.rb
+```
